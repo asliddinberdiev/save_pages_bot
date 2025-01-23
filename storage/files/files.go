@@ -18,7 +18,6 @@ type Storage struct {
 
 const defaultPerm = 0774
 
-
 func New(basePath string) Storage {
 	return Storage{basePath: basePath}
 }
@@ -53,7 +52,7 @@ func (s Storage) Save(page *storage.Page) (err error) {
 	return nil
 }
 
-func (s Storage) PickName(userName string) (page *storage.Page, err error) {
+func (s Storage) PickRandom(userName string) (page *storage.Page, err error) {
 	defer func() { err = e.WrapIfErr("can't pick random page", err) }()
 
 	path := filepath.Join(s.basePath, userName)
